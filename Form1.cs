@@ -28,20 +28,36 @@ namespace Escalas
         public Form1()
         {
             InitializeComponent();
+            // Poblar comboboxes con opciones
+            cmbBase.Items.AddRange(new object[] { "Do", "Re", "Mi", "Fa", "Sol", "La", "Si", "Sib", "Mib" });
+            cmbBase.SelectedIndex = 0;
+
+            cmbTipo.Items.AddRange(new object[] { "Mayor", "Menor" });
+            cmbTipo.SelectedIndex = 0;
         }
 
         private void btnMostrar_Click(object sender, EventArgs e)
         {
-            string escala = txtEscala.Text.Trim();
-            if (escalas.ContainsKey(escala))
+            var baseNote = cmbBase.SelectedItem?.ToString() ?? string.Empty;
+            var tipo = cmbTipo.SelectedItem?.ToString() ?? "Mayor";
+
+            string key = tipo.Equals("Menor", StringComparison.OrdinalIgnoreCase)
+                ? baseNote + " menor"
+                : baseNote;
+
+            if (escalas.TryGetValue(key, out var escalaNotas))
             {
-                lblResultado.Text = string.Join(", ", escalas[escala]);
+                lblResultado.Text = string.Join(", ", escalaNotas);
             }
             else
             {
-                var opciones = string.Join(", ", escalas.Keys);
-                lblResultado.Text = "Escala no encontrada. Opciones: " + opciones;
+                lblResultado.Text = $"No disponible: {baseNote} ({tipo}).";
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

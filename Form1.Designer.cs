@@ -7,9 +7,11 @@
         /// </summary>
         private System.ComponentModel.IContainer components = null;
         private System.Windows.Forms.Label lblInstrucciones;
-        private System.Windows.Forms.TextBox txtEscala;
+        private System.Windows.Forms.ComboBox cmbBase;
+        private System.Windows.Forms.ComboBox cmbTipo;
         private System.Windows.Forms.Button btnMostrar;
         private System.Windows.Forms.Label lblResultado;
+        private System.Windows.Forms.Label lblTipo;
 
         /// <summary>
         ///  Clean up any resources being used.
@@ -32,56 +34,92 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            this.lblInstrucciones = new System.Windows.Forms.Label();
-            this.txtEscala = new System.Windows.Forms.TextBox();
-            this.btnMostrar = new System.Windows.Forms.Button();
-            this.lblResultado = new System.Windows.Forms.Label();
+            lblInstrucciones = new Label();
+            cmbBase = new ComboBox();
+            cmbTipo = new ComboBox();
+            btnMostrar = new Button();
+            lblResultado = new Label();
+            lblTipo = new Label();
+            label1 = new Label();
             SuspendLayout();
             // 
             // lblInstrucciones
             // 
-            this.lblInstrucciones.AutoSize = true;
-            this.lblInstrucciones.Location = new System.Drawing.Point(12, 18);
-            this.lblInstrucciones.Name = "lblInstrucciones";
-            this.lblInstrucciones.Size = new System.Drawing.Size(352, 15);
-            this.lblInstrucciones.TabIndex = 0;
-            this.lblInstrucciones.Text = "Introduce la nota de la escala (Do, Re, Mi, Fa, Sol, La, Si) y pulsa Mostrar:";
+            lblInstrucciones.AutoSize = true;
+            lblInstrucciones.Location = new Point(12, 18);
+            lblInstrucciones.Name = "lblInstrucciones";
+            lblInstrucciones.Size = new Size(431, 20);
+            lblInstrucciones.TabIndex = 0;
+            lblInstrucciones.Text = "Selecciona la nota base y el tipo de escala, luego pulsa Mostrar:";
             // 
-            // txtEscala
+            // cmbBase
             // 
-            this.txtEscala.Location = new System.Drawing.Point(12, 45);
-            this.txtEscala.Name = "txtEscala";
-            this.txtEscala.Size = new System.Drawing.Size(200, 23);
-            this.txtEscala.TabIndex = 1;
+            cmbBase.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbBase.FormattingEnabled = true;
+            cmbBase.Location = new Point(67, 45);
+            cmbBase.Name = "cmbBase";
+            cmbBase.Size = new Size(120, 28);
+            cmbBase.TabIndex = 1;
+            // 
+            // cmbTipo
+            // 
+            cmbTipo.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbTipo.FormattingEnabled = true;
+            cmbTipo.Location = new Point(255, 45);
+            cmbTipo.Name = "cmbTipo";
+            cmbTipo.Size = new Size(80, 28);
+            cmbTipo.TabIndex = 2;
             // 
             // btnMostrar
             // 
-            this.btnMostrar.Location = new System.Drawing.Point(230, 44);
-            this.btnMostrar.Name = "btnMostrar";
-            this.btnMostrar.Size = new System.Drawing.Size(75, 25);
-            this.btnMostrar.TabIndex = 2;
-            this.btnMostrar.Text = "Mostrar";
-            this.btnMostrar.UseVisualStyleBackColor = true;
-            this.btnMostrar.Click += new System.EventHandler(this.btnMostrar_Click);
+            btnMostrar.Location = new Point(355, 44);
+            btnMostrar.Name = "btnMostrar";
+            btnMostrar.Size = new Size(75, 25);
+            btnMostrar.TabIndex = 2;
+            btnMostrar.Text = "Mostrar";
+            btnMostrar.UseVisualStyleBackColor = true;
+            btnMostrar.Click += btnMostrar_Click;
             // 
             // lblResultado
             // 
-            this.lblResultado.AutoSize = true;
-            this.lblResultado.Location = new System.Drawing.Point(12, 85);
-            this.lblResultado.Name = "lblResultado";
-            this.lblResultado.Size = new System.Drawing.Size(70, 15);
-            this.lblResultado.TabIndex = 3;
-            this.lblResultado.Text = "Resultado...";
+            lblResultado.AutoSize = true;
+            lblResultado.Location = new Point(12, 85);
+            lblResultado.Name = "lblResultado";
+            lblResultado.Size = new Size(84, 20);
+            lblResultado.TabIndex = 3;
+            lblResultado.Text = "Resultado...";
+            // 
+            // lblTipo
+            // 
+            lblTipo.AutoSize = true;
+            lblTipo.Location = new Point(207, 48);
+            lblTipo.Name = "lblTipo";
+            lblTipo.Size = new Size(42, 20);
+            lblTipo.TabIndex = 4;
+            lblTipo.Text = "Tipo:";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(16, 49);
+            label1.Name = "label1";
+            label1.Size = new Size(45, 20);
+            label1.TabIndex = 5;
+            label1.Text = "Nota:";
+            label1.Click += label1_Click;
             // 
             // Form1
             // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(500, 150);
-            Controls.Add(this.lblInstrucciones);
-            Controls.Add(this.txtEscala);
-            Controls.Add(this.btnMostrar);
-            Controls.Add(this.lblResultado);
+            ClientSize = new Size(500, 140);
+            Controls.Add(label1);
+            Controls.Add(lblInstrucciones);
+            Controls.Add(cmbBase);
+            Controls.Add(lblTipo);
+            Controls.Add(cmbTipo);
+            Controls.Add(btnMostrar);
+            Controls.Add(lblResultado);
             Name = "Form1";
             Text = "Escalas Musicales";
             ResumeLayout(false);
@@ -89,5 +127,7 @@
         }
 
         #endregion
+
+        private Label label1;
     }
 }
